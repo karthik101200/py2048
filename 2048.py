@@ -118,7 +118,7 @@ def up_shift(boardmat):
                 if boardmat[k][i] == 0:
                     (boardmat[k+1][i],boardmat[k][i])=(boardmat[k][i],boardmat[k+1][i])
                 elif boardmat[k][i]==boardmat[k+1][i] and count==0:
-                    (boardmat[k][i],boardmat[k+1][k])=(2*boardmat[k][i],0)
+                    (boardmat[k][i],boardmat[k+1][i])=(2*boardmat[k][i],0)
                     count+=1
     win_game(win,boardmat)
     lose_game(boardmat)
