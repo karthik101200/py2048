@@ -95,7 +95,7 @@ def left_shift(boardmat):
                 
                 if boardmat[i][k] == 0:
                     (boardmat[i][k+1],boardmat[i][k])=(boardmat[i][k],boardmat[i][k+1])
-                elif boardmat[i][k] == boardmat[i][k+1] and count==0:
+                elif boardmat[i][k] == boardmat[i][k+1] and count<int(len(boardmat)/2):
                     (boardmat[i][k], boardmat[i][k + 1]) = (2 * boardmat[i][k], 0)
                     count+=1
                 
@@ -117,7 +117,7 @@ def up_shift(boardmat):
                 
                 if boardmat[k][i] == 0:
                     (boardmat[k+1][i],boardmat[k][i])=(boardmat[k][i],boardmat[k+1][i])
-                elif boardmat[k][i]==boardmat[k+1][i] and count==0:
+                elif boardmat[k][i]==boardmat[k+1][i] and count<int(len(boardmat)/2):
                     (boardmat[k][i],boardmat[k+1][i])=(2*boardmat[k][i],0)
                     count+=1
     win_game(win,boardmat)
@@ -139,7 +139,7 @@ def right_shift(boardmat):
             for k in range(len(boardmat)-1,0,-1):
                 if boardmat [i][k]==0:
                     (boardmat[i][k],boardmat[i][k-1])=(boardmat[i][k-1],boardmat[i][k])
-                elif boardmat[i][k]==boardmat[i][k-1] and count==0:
+                elif boardmat[i][k]==boardmat[i][k-1] and count<int(len(boardmat)/2):
                     (boardmat[i][k],boardmat[i][k-1])=[2*boardmat[i][k],0]
                     count+=1
     win_game(win,boardmat)
@@ -160,7 +160,7 @@ def down_shift(boardmat):
                 
                 if boardmat[k][i] == 0:
                     (boardmat[k][i],boardmat[k-1][i])=(boardmat[k-1][i],boardmat[k][i])
-                elif boardmat[k][i]==boardmat[k-1][i] and count==0 :
+                elif boardmat[k][i]==boardmat[k-1][i] and count<int(len(boardmat)/2) :
                     (boardmat[k][i],boardmat[k-1][i])=(2*boardmat[k][i],0)
                     count+=1
     win_game(win,boardmat)
