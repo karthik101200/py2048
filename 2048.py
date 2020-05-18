@@ -1,23 +1,23 @@
-import random as random
+import random as random #mod for inserting random 2
 import sys
-import os
-import msvcrt
+import os               #mod required for clear screen so that the game looks like being played on the same board
+import msvcrt           #so that user doesnt need to press "enter" eerytime
 import math
-import copy
+import copy             #this mod is used to copy 1 list to another ...changes made to 1st one wont copy to the 2nd.
 
 def clear():
     os.system("cls")
 
 
-def board_size():
+def board_size():                                              
     default_size=5
     bsize=int(input("enter the board size-") or default_size)
     
     return bsize
 
 def win_val():
-    default_val=2048
-    win=int(input("enter winning value-") or default_val)
+    default_val=2048                                       
+    win=int(input("enter winning value-") or default_val)   #decides winning value(eg 128) that is user defined or def
     if math.log(win, 2).is_integer()==True:
         return win
     else:
@@ -31,7 +31,7 @@ bsize=board_size()
 win=win_val()
 
 boardmat=[]
-for i in range(bsize):
+for i in range(bsize):          #creates a matrix of 0s of user defined size or def value
     boardmat.append([0]*bsize)
 
 def print_board(boardmat):
@@ -42,7 +42,7 @@ def print_board(boardmat):
 def random_int(boardmat):
     r1 =random.randint(0,len(boardmat)-1)
     r2 =random.randint(0,len(boardmat)-1)
-    while boardmat[r1][r2]!=0:
+    while boardmat[r1][r2]!=0:                   #random algo to insert random 2 after every valid move
         r1= random.randint(0,len(boardmat)-1)
         r2= random.randint(0,len(boardmat)-1)
     boardmat[r1][r2]=2
@@ -53,7 +53,7 @@ random_int(boardmat)
 
 def win_game(win,boardmat):
     value=win
-    wlog = value in (item for sublist in boardmat for item in sublist)
+    wlog = value in (item for sublist in boardmat for item in sublist)  #winning algo that checks whether given value is present in the matrix
     if wlog:
         clear()
         print_board(boardmat)
@@ -70,7 +70,7 @@ def lose_game(boardmat):
                 count+=1
     for i in range(len(boardmat)):
         for j in range(len(boardmat[0])):
-            if boardmat[i][j] == 0:
+            if boardmat[i][j] == 0:                              #losing algo-checks whether there is an open space(0) or if a valid move is possible
                 count+=1
     for k in range(len(boardmat)-1):
         if boardmat[len(boardmat)-1][k] == boardmat[len(boardmat)-1][k+1]:
@@ -83,14 +83,14 @@ def lose_game(boardmat):
         print_board(boardmat)
         print("u lose")
         exit()
-    
+#shifting and merging algo for wasd or up,left,right and down resp    
 
 def left_shift(boardmat):
     temp=copy.deepcopy(boardmat) 
     for i in range(len(boardmat)):
         count = 0
         for j in  range(len(boardmat)):
-            
+                                                                   
             for k in range(len(boardmat)-1):
                 
                 if boardmat[i][k] == 0:
@@ -170,7 +170,7 @@ def down_shift(boardmat):
         user_inp()
     else:
         random_int(boardmat)
-
+#algo fn for valid user input
 def user_inp():
     inp=msvcrt.getch()
     if inp.lower()==b'a':
