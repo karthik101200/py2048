@@ -27,3 +27,5 @@ Algorithm- The code for the game consists of certain comments so that one can un
 
 <img src="imgs/2020-05-18%20(2).png" width="500" height="250">
 <img src="imgs/2020-05-18%20(3).png" width="500" height="250">
+<video src="imgs/video%20illus.mp4" width="320" height="200" controls preload></video>
+
